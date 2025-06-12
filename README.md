@@ -1,39 +1,45 @@
-# cBytes
+# bytekit
 
-Char bytes is based on a series of uniformly creasing addresses, to which each address has a binary value and that value corresponds to character in the **ASCII table**.
+**bytekit** is a C library for manipulating character arrays (strings) as sequences of bytes, where each address holds a binary value corresponding to a character in the ASCII table.
 
+---
 
-## Character array and character pointer 
+## Character array vs. character pointer
 
-What is the difference between character array and character pointer ? </br>
+What is the difference between a character array and a character pointer?  
 Consider the following example:
 
 ```c
 char arr[] = "Hello World"; // array version
-char ptr* = "Hello World"; // pointer version
+char *ptr = "Hello World";  // pointer version
 ```
-The type of both the variables is a pointer to `char` or `(char\*)`, so you can pass either of them to a function whose formal argument accepts an array of characters or character pointer. In C programming, the name of an array always points to the base address, roughly speaking, an array is a pointer.
 
-Here are differences:
-- 1 `arr` is an array of `12` characters. When compiler sees the statement:
+- `arr` is an array of 12 characters. When the compiler sees:
     ```c
     char arr[] = "Hello World";
     ```
-    It allocates `12` consecutive bytes of memory and associates the address of the first allocated byte with `arr`.
+    it allocates 12 consecutive bytes of memory and associates the address of the first byte with `arr`.  
     ![allocations for char array in c](https://overiq.com/media/uploads/character-array-in-memory-1504599203175.png)
-    On the other hand when the compiler sees the statement.
+
+- `ptr` is a pointer to a string literal. When the compiler sees:
     ```c
-    char ptr* = "Hello World";
+    char *ptr = "Hello World";
     ```
-    It allocates `12` consecutive bytes for string literal `"Hello World"` and `4` extra bytes for pointer variable `ptr`. And assigns the address of the string literal to `ptr`. So, in this case, a total of `16` bytes are allocated.
+    it allocates 12 bytes for the string literal `"Hello World"` (in read-only memory) and extra bytes for the pointer variable `ptr`. The pointer is assigned the address of the string literal.  
     ![allocations for char pointer in c](https://overiq.com/media/uploads/2020/07/26/character-pointer-and-string-literal-1504599248003.png)
 
-## This library
+In C, the name of an array points to the base address, but an array and a pointer are not the same:  
+- An array allocates storage for the data.
+- A pointer just stores an address, which may point to a string literal (read-only) or to a buffer (modifiable).
 
-In this library we have the following functions for manipulating strings:
+---
+
+## Library functions
+
+This library provides the following functions for manipulating strings:
 - `length`: get the length of a string.
 - `equal`: check if two strings are the same.
-- `copy`: copy characters from one string to another string.
-- `subcopy`: copy a specific portion of a string, using the starting index and an ending index, to another string.
+- `copy`: copy characters from one string to another.
+- `subcopy`: copy a specific portion of a string, using the starting and ending index, to another string.
 - `subcopy_len`: copy a specific portion of a string, using the length, to another string.
 - `subcopy_index_len`: copy a specific portion of a string, using the starting index and the length, to another string.
