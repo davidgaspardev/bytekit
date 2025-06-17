@@ -2,7 +2,7 @@
  * My library for string
  * Author: David Gaspar <davidgaspar.dev@gmail.com>
  */
-#include "cbytes.h"
+#include "bytekit.h"
 
 // Get argument length
 unsigned int length(cbytes_t arg) {
