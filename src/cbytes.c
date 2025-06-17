@@ -18,7 +18,7 @@ unsigned int length(cbytes_t arg) {
 }
 
 // Check that the values of two string (bytes_t ) are equal.
-ubyte_t equal(cbytes_t bytes_1, cbytes_t bytes_2) {
+byte_t equal(cbytes_t bytes_1, cbytes_t bytes_2) {
     unsigned int bytes_1_length = length(bytes_1);
     unsigned int bytes_2_length = length(bytes_2);
 
