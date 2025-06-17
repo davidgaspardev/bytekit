@@ -115,6 +115,11 @@ test_copy: $(BIN_DIRECTORY) library
 	@echo "[ OK ] Test copy file created: $(BIN_DIRECTORY)/test_copy"
 	@./$(BIN_DIRECTORY)/test_copy
 
+test_equal: $(BIN_DIRECTORY) library
+	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/test_equal.c -o $(BIN_DIRECTORY)/test_equal -L$(LIB_DIRECTORY) -l$(NAME) -DTEST_EQUAL
+	@echo "[ OK ] Test equal file created: $(BIN_DIRECTORY)/test_equal"
+	@./$(BIN_DIRECTORY)/test_equal
+
 library: $(LIB_DIRECTORY) $(BUILDERS)
 ifdef CTARGET
 	@ar -rc $(LIB_DIRECTORY)/lib$(NAME)_$(CTARGET).a $(BUILD_DIRECTORY)/$(NAME).o
