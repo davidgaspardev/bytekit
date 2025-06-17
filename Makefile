@@ -1,4 +1,4 @@
-NAME = cbytes
+NAME = bytekit
 
 CC = clang
 CINCLUDES = -Isrc
@@ -107,7 +107,7 @@ TARGETS = \
 .PHONY: $(TARGETS)
 
 test: $(BIN_DIRECTORY) library
-	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/main.c -o $(BIN_DIRECTORY)/test -L$(LIB_DIRECTORY) -lcbytes
+	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/main.c -o $(BIN_DIRECTORY)/test -L$(LIB_DIRECTORY) -l$(NAME)
 	@echo "[ OK ] Test file created: $(BIN_DIRECTORY)/test"
 
 test_copy: $(BIN_DIRECTORY) library
