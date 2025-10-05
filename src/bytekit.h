@@ -1,5 +1,5 @@
 /*
- * cBytes library
+ * Bytekit library
  * Author: David Gaspar <davidgaspar.dev@gmail.com>
  */
 #ifndef BYTEKIT_H
