@@ -42,3 +42,9 @@ int test_equal() {
 
     return 0; // All tests passed
 }
+
+#ifdef TEST_EQUAL
+int main() {
+    return test_equal();
+}
+#endif
