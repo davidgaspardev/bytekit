@@ -1,7 +1,3 @@
-#ifndef DEBUG
-#include <stdio.h>
-#endif
-
 /*
  * cBytes library
  * Author: David Gaspar <davidgaspar.dev@gmail.com>
