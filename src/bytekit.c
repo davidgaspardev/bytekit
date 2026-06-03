@@ -6,15 +6,9 @@
 
 // Get argument length
 unsigned int length(cbytes_t arg) {
-  unsigned int offset = 0;
-  unsigned int count = 0;
-
-  while (*(arg + offset) != '\0') {
-    ++offset;
-    ++count;
-  }
-
-  return count;
+  const byte_t* ptr = arg;
+  while (*ptr) ++ptr;
+  return (unsigned int)(ptr - arg);
 }
 
 // Check that the values of two string (bytes_t ) are equal.
