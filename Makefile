@@ -1,4 +1,4 @@
-NAME = cbytes
+NAME = bytekit
 
 CC = clang
 CINCLUDES = -Isrc
@@ -107,13 +107,18 @@ TARGETS = \
 .PHONY: $(TARGETS)
 
 test: $(BIN_DIRECTORY) library
-	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/main.c -o $(BIN_DIRECTORY)/test -L$(LIB_DIRECTORY) -lcbytes
+	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/main.c -o $(BIN_DIRECTORY)/test -L$(LIB_DIRECTORY) -l$(NAME)
 	@echo "[ OK ] Test file created: $(BIN_DIRECTORY)/test"
 
 test_copy: $(BIN_DIRECTORY) library
 	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/test_copy.c -o $(BIN_DIRECTORY)/test_copy -L$(LIB_DIRECTORY) -l$(NAME) -DTEST_COPY
 	@echo "[ OK ] Test copy file created: $(BIN_DIRECTORY)/test_copy"
 	@./$(BIN_DIRECTORY)/test_copy
+
+test_equal: $(BIN_DIRECTORY) library
+	@$(CC) $(CINCLUDES) $(TESTS_DIRECTORY)/test_equal.c -o $(BIN_DIRECTORY)/test_equal -L$(LIB_DIRECTORY) -l$(NAME) -DTEST_EQUAL
+	@echo "[ OK ] Test equal file created: $(BIN_DIRECTORY)/test_equal"
+	@./$(BIN_DIRECTORY)/test_equal
 
 library: $(LIB_DIRECTORY) $(BUILDERS)
 ifdef CTARGET
